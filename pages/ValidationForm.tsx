@@ -24,6 +24,7 @@ export default function ValidationForm() {
       [name]: value,
     }));
   };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // check that all fields are in place and valid
