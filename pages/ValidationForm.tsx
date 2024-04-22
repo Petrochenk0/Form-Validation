@@ -27,7 +27,7 @@ export default function ValidationForm() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // check that all fields are in place and valid
-    const validationErrors = {}; // we don't add anything here because we don't know what fields will be filled in + they will be added by themselves.
+    const validationErrors: { [key: string]: string } = {}; // we don't add anything here because we don't know what fields will be filled in + they will be added by themselves.
     if (!dataForm.username.trim()) {
       validationErrors.username = 'name is required';
     }
