@@ -19,13 +19,13 @@ export default function ValidationForm() {
 
   const addToData = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setDataForm({
-      ...dataForm,
-      [name]: value, // where [name] === username || email || passwrod || confirmPassword
-    });
+    setDataForm((prevDataForm) => ({
+      ...prevDataForm,
+      [name]: value,
+    }));
   };
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     // check that all fields are in place and valid
     const validationErrors = {}; // we don't add anything here because we don't know what fields will be filled in + they will be added by themselves.
     if (!dataForm.username.trim()) {
@@ -49,12 +49,7 @@ export default function ValidationForm() {
 
     if (Object.keys(validationErrors).length === 0) {
       console.log('Displaying success alert');
-      setDataForm({
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      });
+      setDataForm({ username: '', email: '', password: '', confirmPassword: '' });
       alert('The form has been successfully submitted');
     } else {
       console.log('Validation errors object:', validationErrors);
@@ -62,6 +57,7 @@ export default function ValidationForm() {
     }
   };
 
+  // надо сделать input value который будет в значении Value и после того как ошиьок не будет сделать inputValue === ''
   return (
     <form onSubmit={handleSubmit}>
       <div>
