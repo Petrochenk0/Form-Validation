@@ -58,7 +58,6 @@ export default function ValidationForm() {
     }
   };
 
-  // надо сделать input value который будет в значении Value и после того как ошиьок не будет сделать inputValue === ''
   return (
     <form onSubmit={handleSubmit}>
       <div>
